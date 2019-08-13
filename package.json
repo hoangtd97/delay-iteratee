@@ -1,0 +1,26 @@
+{
+  "name": "delay-iteratee",
+  "version": "1.0.0",
+  "description": "delay asynchronous iteratee",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangtd97/delay-iteratee.git"
+  },
+  "keywords": [
+    "delay",
+    "iteratee"
+  ],
+  "author": "Tran Dinh Hoang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoangtd97/delay-iteratee/issues"
+  },
+  "homepage": "https://github.com/hoangtd97/delay-iteratee#readme",
+  "devDependencies": {
+    "async": "^3.1.0"
+  }
+}
