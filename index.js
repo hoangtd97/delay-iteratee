@@ -1,10 +1,7 @@
 'use strict';
 
-module.exports = DelayIteratee;
-module.exports.delay = delay;
-
 /**
- * Make sure that iteratee[n] will be invoked after time(ms) from the iteratee[n - 1] invoking.
+ * Make sure that iteratee[n] will be invoked after min time(ms) from the iteratee[n - 1] invoking.
  * @param {number} time (ms)
  * @param {function} iteratee 
  * 
@@ -36,11 +33,13 @@ function DelayIteratee(time, iteratee) {
   return async function delayIteratee(...args) {
     if (!start_at) { start_at = Date.now() }
 
-    let timeout = (i * time) - (Date.now() - start_at);
+    let timeout = Math.max((i * time) - (Date.now() - start_at), 0);
 
     i++;
 
-    await delay(timeout);
+    if (timeout > 0) {
+      await delay(timeout);
+    }
 
     return iteratee(...args);
   }
@@ -61,3 +60,6 @@ function delay(ms) {
     setTimeout(resolve, ms);
   })
 }
+
+module.exports = DelayIteratee;
+module.exports.delay = delay;
